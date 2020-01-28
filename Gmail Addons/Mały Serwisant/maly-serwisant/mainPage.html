@@ -1,0 +1,80 @@
+<style>
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 260px;
+	min-height: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+}
+</style>
+
+<br/>
+
+<div style="margin: 10px">
+
+<button class="jiraBtn T-I J-J5-Ji T-I-KE L3" style="background:#205081 !important" role="button">Create JIRA</button>
+<button class="nancyB T-I J-J5-Ji T-I-KE L3" style="background: DarkSlateGray !important" role="button">NANCY B.</button><br/><br/>
+<button class="testProd T-I J-J5-Ji T-I-KE L3" role="button" style="background: green !important">TEST PROD</button>
+<button class="prod T-I J-J5-Ji T-I-KE L3" role="button">Prod</button><br/></br>
+<div class="dropdown">
+  <button class="T-I J-J5-Ji T-I-KE L3">Fav Info</button>
+  <div class="dropdown-content">
+    <a href="https://workbench.developerforce.com/query.php?qrjb=eyJRQl9vYmplY3Rfc2VsIjoiIiwiUUJfZmllbGRfc2VsIjpudWxsLCJRQl9vcmRlcmJ5X2ZpZWxkIjpudWxsLCJRQl9vcmRlcmJ5X3NvcnQiOiJBU0MiLCJRQl9udWxscyI6IkZJUlNUIiwiUUJfbGltaXRfdHh0IjpudWxsLCJtYXRyaXhfcm93cyI6bnVsbCwibWF0cml4X2NvbHMiOm51bGwsIm51bUZpbHRlcnMiOiIxIiwic29xbF9xdWVyeSI6IlNFTEVDVCBMYXN0TW9kaWZpZWREYXRlICwgTG9jYXRpb25fTmFtZV9fYyxBdHRhY2htZW50X0ZpbGVuYW1lX19jLENyZWF0ZWREYXRlLERvY3VtZW50X0lkX19jLERvY3VtZW50X1R5cGVfX2MsRHJ1Z19Qcm9kdWN0X19jLExhbmd1YWdlX19jLE5hbWUsUElfU3RhdHVzX19jLFByb2R1Y3RzX19jLFJlc3BvbnNlX1N0YXR1c19fYyxSZXNwb25zZV9NZXNzYWdlX19jICxUaXRsZV9fYyBGUk9NIFBJRF9Mb2dfX2MgT1JERVIgQlkgTEFzdG1vZGlmaWVkRGF0ZSBkZXNjIn0%3D#qr" target="_blank">PID logs</a>
+    <a href="https://workbench.developerforce.com/query.php?qrjb=eyJRQl9vYmplY3Rfc2VsIjoiIiwiUUJfZmllbGRfc2VsIjpudWxsLCJRQl9vcmRlcmJ5X2ZpZWxkIjpudWxsLCJRQl9vcmRlcmJ5X3NvcnQiOiJBU0MiLCJRQl9udWxscyI6IkZJUlNUIiwiUUJfbGltaXRfdHh0IjpudWxsLCJtYXRyaXhfcm93cyI6bnVsbCwibWF0cml4X2NvbHMiOm51bGwsIm51bUZpbHRlcnMiOiIxIiwic29xbF9xdWVyeSI6IlNFTEVDVCBOYW1lICwgTUlfYXRsYXNfUHJvZHVjdF9OYW1lX19jIEZST00gUElEX0FkZGl0aW9uYWxfUHJvZHVjdF9NYXBwaW5nX19jIn0%3D#qr" target="_blank">PID Product Mapping</a>
+    <a href="https://workbench.developerforce.com/query.php?qrjb=eyJRQl9vYmplY3Rfc2VsIjoiIiwiUUJfZmllbGRfc2VsIjpudWxsLCJRQl9vcmRlcmJ5X2ZpZWxkIjpudWxsLCJRQl9vcmRlcmJ5X3NvcnQiOiJBU0MiLCJRQl9udWxscyI6IkZJUlNUIiwiUUJfbGltaXRfdHh0IjpudWxsLCJtYXRyaXhfcm93cyI6bnVsbCwibWF0cml4X2NvbHMiOm51bGwsIm51bUZpbHRlcnMiOiIxIiwic29xbF9xdWVyeSI6IlNFTEVDVCBpZCwgTmFtZSwgTUlfYXRsYXNfQXJ0aWNsZV9UeXBlX19jIEZST00gUElEX0RvY3VtZW50X1R5cGVfTWFwcGluZ19fYyJ9#qr" target="_blank">PID Article Types</a>
+    <a href="https://workbench.developerforce.com/query.php?qrjb=eyJRQl9vYmplY3Rfc2VsIjoiIiwiUUJfZmllbGRfc2VsIjpudWxsLCJRQl9vcmRlcmJ5X2ZpZWxkIjpudWxsLCJRQl9vcmRlcmJ5X3NvcnQiOiJBU0MiLCJRQl9udWxscyI6IkZJUlNUIiwiUUJfbGltaXRfdHh0IjpudWxsLCJtYXRyaXhfcm93cyI6bnVsbCwibWF0cml4X2NvbHMiOm51bGwsIm51bUZpbHRlcnMiOiIxIiwic29xbF9xdWVyeSI6IlNFTEVDVCBDb3VudHJ5X0NvZGVfX2MsIE5hbWUsIE1JX0F0bGFzX0NvdW50cnlfX2MsIFB1Ymxpc2hfRW5hYmxlZF9fYywgTGFzdE1vZGlmaWVkRGF0ZSBGUk9NIFBJRF9Db3VudHJ5X01hcHBpbmdfX2MgT1JERVIgQlkgUHVibGlzaF9FbmFibGVkX19jLCBDb3VudHJ5X0NvZGVfX2MifQ%3D%3D#qr" target="_blank">PID Country Mapping</a>
+    <a href="https://workbench.developerforce.com/query.php?qrjb=eyJRQl9vYmplY3Rfc2VsIjoiIiwiUUJfZmllbGRfc2VsIjpudWxsLCJRQl9vcmRlcmJ5X2ZpZWxkIjpudWxsLCJRQl9vcmRlcmJ5X3NvcnQiOiJBU0MiLCJRQl9udWxscyI6IkZJUlNUIiwiUUJfbGltaXRfdHh0IjpudWxsLCJtYXRyaXhfcm93cyI6bnVsbCwibWF0cml4X2NvbHMiOm51bGwsIm51bUZpbHRlcnMiOiIxIiwic29xbF9xdWVyeSI6IlNFTEVDVCBpZCwgQ3JlYXRlZERhdGUsIEZyb21fX2MsIFN0YXR1c19fYywgSW5ib3hfRW1haWxfX2MgLCBTdWJqZWN0X19jLCBUb19fYyBGUk9NIEVtYWlsX01lc3NhZ2VfQ0NfX2MgT1JERVIgQlkgQ3JlYXRlZERhdGUgREVTQyBMSU1JVCAzMDAifQ%3D%3D#qr" target="_blank">Last Precases</a>
+	<a class="envConf">Environment Configuration</a>
+	<a class="taxoReport">Taxonomy Report</a>
+
+  </div>
+</div>
+
+<button class="miSearch T-I J-J5-Ji T-I-KE L3" style="background: orange !important" role="button" onclick=" ">MI SEARCH</button><br/><br/>
+<button class="mailboxes T-I J-J5-Ji T-I-KE L3" style="background: #34495E !important" role="button">MAILBOXES</button>
+<button class="userLookup T-I J-J5-Ji T-I-KE L3" style="background: #239B56 !important" role="button">FIND USER</button><br/><br/>
+<!-- <button class="productCreation T-I J-J5-Ji T-I-KE L3" style="background: blue !important" role="button">QM TAXONOMY SCRIPT</button><br/><br/>
+<button class="congressProds T-I J-J5-Ji T-I-KE L3" style="background: blue !important" role="button">CONGRESS PRODucts</button><br/><br/>
+-->
+
+<iframe class="MaQUserInfo" style="height:550px; width: 240px;" src=""></iframe>
+<input type="text" id="clp"/>
+
+</div>
+
+
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+</div>

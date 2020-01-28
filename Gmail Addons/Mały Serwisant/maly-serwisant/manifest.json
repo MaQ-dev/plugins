@@ -1,0 +1,37 @@
+{
+  "name": "Mały Serwisant",
+  "description": "Małe narzędzie, by uprzyjemnić pracę na serwisie MI atlas",
+  "version": "0.1",  
+      "content_scripts": [
+        {
+		 "run_at": "document_start",
+            "matches": [
+                "https://mail.google.com/*", "https://inbox.google.com/*", "https://*.salesforce.com/*", "https://*.force.com/*"
+            ],
+            "js": [
+                "forcetk.js", "inboxsdk.js","loader.js", "jquery-1.8.1.js"
+            ]
+        }
+    ],
+  
+  
+  "web_accessible_resources": [
+    "monkey.png",
+	"mainPage.html",
+	"iframe_templatkarz.html",
+	"iframe_global.html",
+	"iframe_users.html"
+  ],
+  "permissions": [
+	"tabs",
+    "webRequest",
+	"storage",
+    "https://mail.google.com/",
+    "https://inbox.google.com/",
+	"https://*.salesforce.com/", 
+	"http://*.salesforce.com/",
+	"https://*.force.com/",
+	"https://maq-workbench.herokuapp.com/"
+  ],
+  "manifest_version": 2
+}
