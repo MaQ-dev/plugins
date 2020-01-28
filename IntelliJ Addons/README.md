@@ -1,2 +1,2 @@
-# MaQ - plugins
+# IntelliJ - addons
 Plugins created by MaQ
