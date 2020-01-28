@@ -1,0 +1,242 @@
+<html>
+<head>
+    <title>MI TOOl</title>
+
+    <style>
+        #avatar {
+            width: 150px;
+            height: 150px;
+
+            background-size: cover;
+
+            background-position: top center;
+
+            border-radius: 55%;
+            box-shadow: 6px 10px 28px 0px rgba(0,0,0,0.75);
+        }
+    </style>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+
+    <!-- Minified Cirrus CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cirrus-ui@0.5.4/dist/cirrus.min.css">
+
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/forcetk.js"></script>
+    <script type="text/javascript">
+        // OAuth Configuration
+        var loginUrl = 'https://miatlas.my.salesforce.com/';
+        var clientId = '3MVG99qusVZJwhskBlwz9NKf6H9F80Bl15Ey0hqDG2e2m4yiWrMWcwg5f138DRa7MaT0spT8epsZ43ZUROx6x';
+        var redirectUri = 'https://maq-workbench.herokuapp.com/oauthcallback.html';
+        var proxyUrl = 'https://maq-workbench.herokuapp.com/proxy.php?mode=native';
+        var caseNumber = '';
+        var accessToken = '';
+        var instanceURL = '';
+        var caseId;
+        var ownerId;
+
+        var client = null;
+        $(document).ready(function() {
+            client = new forcetk.Client(clientId, loginUrl, proxyUrl);
+            console.log(getUrlParameter('caseNumber'));
+            caseNumber = getUrlParameter('caseNumber');
+            accessToken = getCookie('access_token');
+            instanceURL = getCookie('instance_url');
+            if (accessToken == '' && instanceURL == '') {
+                window.open(getAuthorizeUrl(loginUrl, clientId, redirectUri));
+            } else {
+                var zz = client.setSessionToken(accessToken, null,
+                    instanceURL);
+                console.log(zz);
+
+                fillData(caseNumber);
+            }
+        });
+
+        function getAuthorizeUrl(loginUrl, clientId, redirectUri) {
+            return loginUrl + 'services/oauth2/authorize?display=popup' +
+                '&response_type=token&client_id=' + escape(clientId) +
+                '&redirect_uri=' + escape(redirectUri);
+        }
+
+        function sessionCallback(oauthResponse) {
+            if (typeof oauthResponse === 'undefined' ||
+                typeof oauthResponse['access_token'] === 'undefined') {
+                alert('undefined');
+                //$('#message').text('Error - unauthorized!');
+                setCookie('access_token', '', 999);
+                setCookie('instance_url', '', 999);
+            } else {
+                setCookie('access_token', oauthResponse.access_token, 999);
+                setCookie('instance_url', oauthResponse.instance_url, 999);
+                client.setSessionToken(oauthResponse.access_token, null,
+                    oauthResponse.instance_url);
+
+                fillData(caseNumber);
+            }
+        }
+
+        function fillData(caseNumber) {
+
+
+            console.log('caseNumber: ' + caseNumber);
+            var query = "SELECT Id,CaseNumber, Status, Is_Deleted__c, Owner.Id, Owner.Name, Owner.Email, LastModifiedBy.Name, LastModifiedBy.Email,  LastModifiedDate, Country_code_CC__c, Adverse_event__c FROM Case WHERE CaseNumber LIKE '%" + caseNumber + "%' LIMIT 1";
+            console.log("query: " + query);
+            client.query(query,
+                function(response) {
+
+                    if(null != response.records[0]) {
+
+                        caseId = response.records[0].Id;
+                        console.log("caseId: " + caseId);
+
+                        var caseNumber = response.records[0].CaseNumber;
+                        var status = response.records[0].Status;
+                        var deleted = response.records[0].Is_Deleted__c;
+                        var lastModifiedBy = response.records[0].LastModifiedBy.Name;
+                        var lastModifiedByEmail = response.records[0].LastModifiedBy.Email;
+                        var country = response.records[0].Country_code_CC__c;
+                        var owner = response.records[0].Owner.Name;
+                        var ownerEmail = response.records[0].Owner.Email;
+                        ownerId = response.records[0].Owner.Id;
+                        var ae = response.records[0].Adverse_event__c;
+                        //var photo = response.records[0].Owner.FullPhotoUrl;
+
+                        if (null != caseId) {
+                            $('#cId').html("Case Number: " + caseNumber + "<br/>Country: " + country + "<br/>Status: " + status + "<br/>Deleted? " + deleted + "<br/>Owner: " + owner + " (<a target='_blank' href='https://mail.google.com/mail/u/0/?view=cm&fs=1&to=" + ownerEmail + "'>" + ownerEmail + "</a>)<br/>" + "Last Modified By: " + lastModifiedBy + " (" + lastModifiedByEmail + ")" + "<br/>Adverse Event: " + ae  );
+                        }
+
+                        // query for Photo
+
+                        client.query("SELECT ID, Name, FullPhotoUrl FROM User WHERE Id = '" + ownerId + "'",
+                            function(response) {
+                                $("#avatar").attr("style","background-image: url(" + response.records[0].FullPhotoUrl) + ")";
+                            });
+                    }
+                    else {
+                        alert('Case not found!');
+                    }
+                });
+        }
+
+        function casePreview() {
+            window.open('https://miatlas.my.salesforce.com/ui/support/servicedesk/ServiceDeskPage#/apex/CC_CaseView?id=' + caseId, '_blank');
+        }
+
+        function casePreviewAsOwner() {
+            window.open('https://miatlas.my.salesforce.com/servlet/servlet.su?oid=00Db0000000IyjS&suorgadminid=' + ownerId + '&retURL=%2F005b0000003MN0p%3Fnoredirect%3D1%26isUserEntityOverride%3D1&targetURL=%2Fui%2Fsupport%2Fservicedesk%2FServiceDeskPage%23%2Fapex%2FCC_CaseView%3Fid%3D' + caseId, '_blank');
+        }
+
+
+        function caseTechnicalView() {
+            window.open('chrome-extension://aodjmnfhjibkcdimpodiifdjnnncaafh/inspect.html?host=miatlas.my.salesforce.com&objectType=Case&recordId=' + caseId, '_blank');
+
+        }
+        function ownerEdit() {
+            window.open('https://miatlas.my.salesforce.com/apex/UserManagement?pageUserId=' + ownerId, '_blank');
+
+        }
+
+        function caseDelete() {
+            window.open('https://miatlas.my.salesforce.com/ui/support/servicedesk/ServiceDeskPage#/apex/CC_CaseDelete?id=' + caseId, '_blank');
+        }
+
+
+        String.prototype.format = function() {
+            var args = arguments;
+            return this.replace(/{(\d+)}/g, function(match, number) {
+                return typeof args[number] != 'undefined' ?
+                    args[number] :
+                    match;
+            });
+        };
+
+        function clearCache() {
+            setCookie('access_token', '', 999);
+            setCookie('instance_url', '', 999);
+            location.reload();
+        }
+
+        function setCookie(cname, cvalue, exdays) {
+            var d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            var expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
+        function getCookie(cname) {
+            var name = cname + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+
+        function checkCookie() {
+            var user = getCookie("caseNumber");
+            if (user != "") {
+                alert("Welcome again " + user);
+            } else {
+                user = prompt("Please enter your name:", "");
+                if (user != "" && user != null) {
+                    setCookie("caseNumber", user, 365);
+                }
+            }
+        }
+
+        var getUrlParameter = function getUrlParameter(sParam) {
+            var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+                sURLVariables = sPageURL.split('&'),
+                sParameterName,
+                i;
+
+            for (i = 0; i < sURLVariables.length; i++) {
+                sParameterName = sURLVariables[i].split('=');
+
+                if (sParameterName[0] === sParam) {
+                    return sParameterName[1] === undefined ? true : sParameterName[1];
+                }
+            }
+        };
+
+    </script>
+
+
+    <div class="placeholder">
+        <div class="placeholder-icon">
+        <span class="icon">
+
+            <i class="fa fa-coffee x-large"></i>
+        </span>
+        </div>
+        <img id="avatar" />
+
+        <h6 id="cId" class="placeholder-title">Please login to MI atlas first!</h6>
+        <div align="center"><button style="" class="btn" onclick="clearCache()">LOGIN to MI atlas</button></div>
+        <div class="placeholder-subtitle">Choose your weapon:</div>
+
+        <div align="center" style="">
+
+            <button style="width: 50%; background: #239B56 !important; color: white" class="btn btn-outline-inverted hover-grow success" onclick="casePreview();">Case Preview</button>
+            <button style="width: 50%; background: #347789 !important; color: white" class="btn btn-outline-inverted hover-grow success" onclick="casePreviewAsOwner();">Case Preview as Owner</button>
+            <button style="width: 50%; background: #893483 !important; color: white" class="btn btn-outline-inverted hover-grow success" onclick="ownerEdit();">Owner Edit</button>
+            <button style="width: 50%; background: #205081 !important; color: white" class="btn btn-outline-inverted hover-grow success tooltip" data-tooltip="CAREFULLY, SIS!" onclick="caseTechnicalView();">Technical View</button>
+            <button style="width: 50%; background: #c41515 !important; color: white" class="btn btn-outline-inverted hover-grow success tooltip" data-tooltip="CAREFULLY, SIS!" onclick="caseDelete()"><i class="fab fa-accessible-icon"></i>Remove Case</button>
+
+            <br/>
+        </div>
+    </div>
+
+
+    <br/><br/>
+</html>

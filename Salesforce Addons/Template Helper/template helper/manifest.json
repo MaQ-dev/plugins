@@ -1,0 +1,28 @@
+{
+    "name": "Template Helper",
+    "version": "1.0",
+    "manifest_version": 2,
+    
+	"icons": { "16": "icon.png",
+           "48": "icon.png",
+          "128": "icon.png" },
+	
+    
+        "browser_action": {
+        "default_popup": "popup.html"
+		
+    },
+  "permissions": [
+    "cookies",
+    "https://*.salesforce.com/*",
+    "tabs"
+  ],
+	"background": {
+   "page": "popup.html"
+},
+	"content_scripts": [{
+    "js": ["background.js", "preview.js"],
+    "matches": ["https://*.salesforce.com/*"],
+	"run_at": "document_end"
+  }]
+}

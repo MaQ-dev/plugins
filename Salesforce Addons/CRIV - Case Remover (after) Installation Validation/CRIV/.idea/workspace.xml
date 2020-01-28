@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="4a49f19d-42b0-4762-91dd-197c3151d4f3" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="IlluminatedCloudWorkspaceSettings">
+    <option name="projectWorkspaceSettings">
+      <ProjectWorkspaceSettings>
+        <option name="anonymousApexSettings">
+          <AnonymousApexSettings>
+            <option name="apexLogLevel" value="FINEST" />
+            <option name="calloutsLogLevel" value="ERROR" />
+            <option name="profilingLogLevel" value="ERROR" />
+            <option name="systemLogLevel" value="FINEST" />
+            <option name="validationLogLevel" value="ERROR" />
+            <option name="visualforceLogLevel" value="ERROR" />
+            <option name="workflowLogLevel" value="ERROR" />
+          </AnonymousApexSettings>
+        </option>
+      </ProjectWorkspaceSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1SulZkNUp5rD7oaQ4banWB6NpU3" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\mosakoww\Documents\Wtyczki\mi tools" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\mosakoww\Documents\Wtyczki\template helper" />
+      <recent name="C:\Users\mosakoww\Documents\Wtyczki\mi tools" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="popup.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/CRIV/mi tools/popup.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.popup.html" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4a49f19d-42b0-4762-91dd-197c3151d4f3" name="Default Changelist" comment="" />
+      <created>1572421418820</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1572421418820</updated>
+      <workItem from="1572421421194" duration="7985000" />
+      <workItem from="1572430488453" duration="8825000" />
+      <workItem from="1572509981419" duration="3635000" />
+      <workItem from="1572858737801" duration="1145000" />
+      <workItem from="1572938410319" duration="598000" />
+      <workItem from="1573026450385" duration="3183000" />
+      <workItem from="1573113293817" duration="639000" />
+      <workItem from="1573194054804" duration="585000" />
+      <workItem from="1573544657159" duration="6397000" />
+      <workItem from="1573719162162" duration="596000" />
+      <workItem from="1573834753083" duration="1489000" />
+      <workItem from="1573891474829" duration="589000" />
+      <workItem from="1574057878577" duration="1204000" />
+      <workItem from="1574149765541" duration="590000" />
+      <workItem from="1574236994037" duration="596000" />
+      <workItem from="1574244014983" duration="643000" />
+      <workItem from="1574324890153" duration="1512000" />
+      <workItem from="1574670688982" duration="590000" />
+      <workItem from="1574752783537" duration="584000" />
+      <workItem from="1574850856739" duration="21323000" />
+      <workItem from="1574952002014" duration="1218000" />
+      <workItem from="1575007554332" duration="15540000" />
+      <workItem from="1575272900156" duration="593000" />
+      <workItem from="1575358035832" duration="262000" />
+      <workItem from="1575358729006" duration="3317000" />
+      <workItem from="1576657737385" duration="6582000" />
+      <workItem from="1576747368801" duration="575000" />
+      <workItem from="1576824642259" duration="2411000" />
+      <workItem from="1578381880415" duration="565000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+</project>

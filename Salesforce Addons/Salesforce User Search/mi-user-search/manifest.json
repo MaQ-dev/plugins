@@ -1,0 +1,27 @@
+{
+ "background": {"scripts": ["jquery-2.2.4.js", "select2.js", "sweetalert2.all.min.js", "background.js"]},
+ "browser_action": {
+ "default_icon": "icon-128.png",
+ "default_title": "Salesforce User Search"
+ },
+ "name": "Salesforce User Search",
+ "description": "Salesforce User Search",
+ "icons": {
+     "16": "icon-16.png",
+     "48": "icon-48.png",
+     "128": "icon-128.png" },
+ "permissions": [ "tabs", "storage", "https://*.salesforce.com/", "https://*.visual.force.com/", "https://*.lightning.force.com/" ],
+ "version": "0.1",
+ "manifest_version": 2,
+ "content_scripts": 
+    [
+        {
+            "matches": [ "https://*.salesforce.com/*", "https://*.visual.force.com/*", "https://*.lightning.force.com/*", "https://*.cloudforce.com/*"],
+			"permissions": [ "https://*.salesforce.com/*", "https://*.force.com/*", "https://*.cloudforce.com/*", "https://*.lightning.force.com/", "cookies" ],
+			"all_frames": true,
+            "js":["jquery-2.2.4.js", "select2.js","sweetalert2.all.min.js"],
+			"css": ["styles.css", "select2.css"],
+            "run_at": "document_end"
+        }
+    ]
+}
